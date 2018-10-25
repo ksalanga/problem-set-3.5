@@ -22,7 +22,7 @@ public class ProblemSet3_5 {
 		// test your solutions here
 		
 		ps.primes(1, 2);
-		ps.fibonacci(10);
+		ps.fibonacci(2);
 		ps.leapYears(-1);
 	}
 	
@@ -120,10 +120,10 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void fibonacci(int n) {
-		int num = n % 10;
-		int first = 1;
-		int second = 0;
-		int sum = 0;
+		long num = n % 10;
+		long first = 1;
+		long second = 0;
+		long sum = 0;
 		
 		for(int i = 1; i <= n; i++) {
 			sum = first + second;
@@ -134,7 +134,7 @@ public class ProblemSet3_5 {
 		if(num == 1) {
 			System.out.println("The " + n + "st Fibonacci number is " + sum + ".");
 		}
-		else if(num == 4) {
+		else if(num == 2) {
 			System.out.println("The " + n + "nd Fibonacci number is " + sum + ".");
 		}
 		else if(num == 3) {
