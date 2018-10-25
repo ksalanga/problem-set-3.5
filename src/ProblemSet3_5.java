@@ -21,7 +21,7 @@ public class ProblemSet3_5 {
 		
 		// test your solutions here
 		
-		ps.primes(1, 1000);
+		ps.primes(1, 2);
 	}
 	
 	/**
@@ -36,7 +36,33 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void primes(int start, int end) {
+		int count = 0;
 		
+		for(; start <= end; start++) {
+			if(isPrime(start)) {
+				count++;
+			}
+		}
+		
+		System.out.println("There" + ((count != 1) ? " are " + count + " prime numbers." : " is 1 prime number.") );
+		
+	}
+	
+	public boolean isPrime(int n) {
+		boolean check = false;
+		
+		for(int i = 2; i <= n/2; i++) {
+			if (n % i == 0) {
+				check = true;
+			} 
+		}
+		
+		if(!check && n >= 2) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	/**
