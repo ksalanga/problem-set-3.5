@@ -22,6 +22,8 @@ public class ProblemSet3_5 {
 		// test your solutions here
 		
 		ps.primes(1, 2);
+		ps.fibonacci(10);
+		ps.leapYears(-1);
 	}
 	
 	/**
@@ -76,7 +78,21 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void leapYears(int count) {
+		int year = 2020;
 		
+		if(count == 1) {
+			System.out.print("The leap year is " + year);
+		}
+		
+		for(int i = 0; i < count; i++) {
+			if(count == 1) {
+				break;
+			}
+			else {
+				System.out.print(year + "and");
+			}
+		}
+
 	}
 	
 	/**
@@ -104,7 +120,29 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void fibonacci(int n) {
+		int num = n % 10;
+		int first = 1;
+		int second = 0;
+		int sum = 0;
 		
+		for(int i = 1; i <= n; i++) {
+			sum = first + second;
+			first = second;
+			second = sum;
+		}
+		
+		if(num == 1) {
+			System.out.println("The " + n + "st Fibonacci number is " + sum + ".");
+		}
+		else if(num == 4) {
+			System.out.println("The " + n + "nd Fibonacci number is " + sum + ".");
+		}
+		else if(num == 3) {
+			System.out.println("The " + n + "rd Fibonacci number is " + sum + ".");
+		}
+		else {
+			System.out.println("The " + n + "th Fibonacci number is " + sum + ".");
+		}
 	}
 	
 	/**
