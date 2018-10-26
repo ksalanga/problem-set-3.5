@@ -26,7 +26,7 @@ public class ProblemSet3_5 {
 		ProblemSet3_5 ps = new ProblemSet3_5();
 		
 		//ps.testPrimes();
-		//ps.testLeapYears();
+		ps.testLeapYears();
 		//ps.testPalindromicNumbers();
 		//ps.testFibonacci();
 		//ps.testMultiples();
@@ -294,7 +294,7 @@ public class ProblemSet3_5 {
 	public boolean isPrime(int n) {
 		boolean check = false;
 		
-		for(int i = 2; i <= n/2; i++) {
+		for(int i = 2; i * i <= n; i++) {
 			if (n % i == 0) {
 				check = true;
 			} 
@@ -321,18 +321,16 @@ public class ProblemSet3_5 {
 	public void leapYears(int count) {
 		int year = 2020;
 		
+		if(count <= 0) {
+			System.out.println("I don't know how to compute the next " + count + " leap years...");
+		}
 		if(count == 1) {
-			System.out.print("The leap year is " + year);
+			System.out.println("The next leap year is " + year + ".");
 		}
-		
-		for(int i = 0; i < count; i++) {
-			if(count == 1) {
-				break;
-			}
-			else {
-				System.out.print(year + "and");
-			}
+		if(count == 2) {
+			System.out.println("The next 2 leap years are " + year + " and " + (year + 4) + "." );
 		}
+			
 
 	}
 	
