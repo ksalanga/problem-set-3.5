@@ -25,16 +25,195 @@ public class ProblemSet3_5 {
 	public static void main(String[] args) {
 		ProblemSet3_5 ps = new ProblemSet3_5();
 		
-		//ps.testPrimes();
+		ps.testPrimes();
 		ps.testLeapYears();
-		//ps.testPalindromicNumbers();
-		//ps.testFibonacci();
-		//ps.testMultiples();
+		ps.testPalindromicNumbers();
+		ps.testFibonacci();
+		ps.testMultiples();
 	}
 	
 	/*
 	 * Private method designed to test the implementation of primes.
 	 */
+	
+	/**
+	 * How many prime numbers are there between @start and @end, where @start and @end
+	 * are positive integers in the range [1, @Integer.MAX_VALUE]?
+	 * 
+	 * Print your solution in the following formats: "There is X prime number."
+	 *                                               "There are X prime numbers."
+	 * 
+	 * @param start
+	 * @param end
+	 */
+	
+	public void primes(int start, int end) {
+		int count = 0;
+		
+		for(; start <= end; start++) {
+			if(isPrime(start)) {
+				count++;
+			}
+		}
+		
+		System.out.println("There" + ((count != 1) ? " are " + count + " prime numbers." : " is 1 prime number.") );
+		
+	}
+	
+	public boolean isPrime(int n) {
+		boolean check = false;
+		
+		for(int i = 2; i * i <= n; i++) {
+			if (n % i == 0) {
+				check = true;
+			} 
+		}
+		
+		if(!check && n >= 2) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * What are the next @count leap years?
+	 * 
+	 * Print your solution in the following formats: "The next leap year is X."
+	 *                                               "The next 2 leap years are X and Y."
+	 *                                               "THe next N leap years are A, ..., X, Y, and Z."
+	 * 
+	 * @param count
+	 */
+	
+	public void leapYears(int count) {
+		int lastLeap = 2016; 
+		
+		if (count < 0 || count == 0) {
+			System.out.println("I don't know how to compute the next " + count + " leap years...");
+		}
+		else {
+			System.out.print("The next ");
+					if (count == 1) {
+						System.out.print("leap year is ");
+					}
+					else if (count >= 2) {
+						System.out.print(count + " leap years are ");
+					}
+					for (int i = 1; i <= count; i++) {
+						if (i != count) {
+							if ((lastLeap + (4 * i)) % 400 == 0) {
+								System.out.print((lastLeap + (4 * i)) + ", ");
+							}
+							else if ((lastLeap + (4 * i)) % 400 != 0 && (lastLeap + (4 * i)) % 100 == 0) {
+								System.out.print((lastLeap + (4 * (i + 1))) + ", ");
+								i++;
+								count++; 
+							}
+							else if (count == 2) {
+								System.out.print((lastLeap + (4 * i)) + " ");
+							}
+							else {
+								System.out.print((lastLeap + (4 * i)) + ", ");
+							}
+						}
+						else if (i == count) {
+							if (count != 1) {
+								System.out.println("and " + (lastLeap + (4 * i)) + ".");
+							}
+							else if (count == 1) {
+								System.out.println((lastLeap + (4 * i)) + ".");
+							}
+						}
+					}
+		}
+
+	}
+	
+	/**
+	 * Is @number a palindromic number?
+	 * 
+	 * Print your solution in the following formats: "X is a palindromic number."
+	 *                                               "X is not a palindromic number."
+	 *                                               
+	 * @param number
+	 */
+	
+	public void palindromicNumbers(int number) {
+		int check = 0;
+		int sum = 0; 
+		int numb = number;
+		
+		while (number > 0) {
+			check = number % 10;    
+			sum = (sum * 10) + check;    
+			number = number / 10;
+			}    
+		  
+			if (numb == sum) {  
+			  System.out.println(numb + " is a palindromic number.");   
+			}
+			else {
+			  System.out.println(numb + " is not a palindromic number.");  
+			}
+	}
+	
+	/**
+	 * What is the @nth Fibonacci number, where @n is a positive integer?
+	 * 
+	 * Print your solution in the following formats: "The 21st Fibonacci number is X."
+	 *                                               "The 22nd Fibonacci number is X."
+	 *                                               "The 23rd Fibonacci number is X."
+	 *                                               "The 24th Fibonacci number is X."
+	 *                                               
+	 * @param n
+	 */
+	
+	public void fibonacci(int n) {
+		long num = n % 10;
+		long first = 1;
+		long second = 0;
+		long sum = 0;
+		
+		for(int i = 1; i <= n; i++) {
+			sum = first + second;
+			first = second;
+			second = sum;
+		}
+		
+		if(num == 1) {
+			System.out.println("The " + n + "st Fibonacci number is " + sum + ".");
+		}
+		else if(num == 2) {
+			System.out.println("The " + n + "nd Fibonacci number is " + sum + ".");
+		}
+		else if(num == 3) {
+			System.out.println("The " + n + "rd Fibonacci number is " + sum + ".");
+		}
+		else {
+			System.out.println("The " + n + "th Fibonacci number is " + sum + ".");
+		}
+	}
+	
+	/**
+	 * What is the sum of all multiples of @x and @y less than @limit, where @x, @y, and
+	 * @limit are positive integers?
+	 * 
+	 * Print your solution in the following format: "The sum of all multiples of X and Y less than LIMIT is Z."
+	 * 
+	 * @param limit
+	 */
+	
+	public void multiples(int x, int y, int limit) {
+		long sum = 0;
+		
+		for (int i = 0; i < limit; i++) {
+			sum += (i % x == 0 || i % y == 0) ? i : 0;
+		}
+		
+		System.out.println("The sum of all multiples of " + x + " and " + y + " less than " + limit + " is " + sum + ".");
+	}
 	
 	private void testPrimes() {		
 		System.out.print("primes(1, 2), expected       : There is 1 prime number.\n");
@@ -265,135 +444,5 @@ public class ProblemSet3_5 {
 		System.out.print("multiples(3, 5, 100000), actual   : ");
 		multiples(3, 5, 100000);
 		System.out.println("------------------------------------------------------------------");
-	}
-	
-	/**
-	 * How many prime numbers are there between @start and @end, where @start and @end
-	 * are positive integers in the range [1, @Integer.MAX_VALUE]?
-	 * 
-	 * Print your solution in the following formats: "There is X prime number."
-	 *                                               "There are X prime numbers."
-	 * 
-	 * @param start
-	 * @param end
-	 */
-	
-	public void primes(int start, int end) {
-		int count = 0;
-		
-		for(; start <= end; start++) {
-			if(isPrime(start)) {
-				count++;
-			}
-		}
-		
-		System.out.println("There" + ((count != 1) ? " are " + count + " prime numbers." : " is 1 prime number.") );
-		
-	}
-	
-	public boolean isPrime(int n) {
-		boolean check = false;
-		
-		for(int i = 2; i * i <= n; i++) {
-			if (n % i == 0) {
-				check = true;
-			} 
-		}
-		
-		if(!check && n >= 2) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	/**
-	 * What are the next @count leap years?
-	 * 
-	 * Print your solution in the following formats: "The next leap year is X."
-	 *                                               "The next 2 leap years are X and Y."
-	 *                                               "THe next N leap years are A, ..., X, Y, and Z."
-	 * 
-	 * @param count
-	 */
-	
-	public void leapYears(int count) {
-		int year = 2020;
-		
-		if(count <= 0) {
-			System.out.println("I don't know how to compute the next " + count + " leap years...");
-		}
-		if(count == 1) {
-			System.out.println("The next leap year is " + year + ".");
-		}
-		if(count == 2) {
-			System.out.println("The next 2 leap years are " + year + " and " + (year + 4) + "." );
-		}
-			
-
-	}
-	
-	/**
-	 * Is @number a palindromic number?
-	 * 
-	 * Print your solution in the following formats: "X is a palindromic number."
-	 *                                               "X is not a palindromic number."
-	 *                                               
-	 * @param number
-	 */
-	
-	public void palindromicNumbers(int number) {
-		
-	}
-	
-	/**
-	 * What is the @nth Fibonacci number, where @n is a positive integer?
-	 * 
-	 * Print your solution in the following formats: "The 21st Fibonacci number is X."
-	 *                                               "The 22nd Fibonacci number is X."
-	 *                                               "The 23rd Fibonacci number is X."
-	 *                                               "The 24th Fibonacci number is X."
-	 *                                               
-	 * @param n
-	 */
-	
-	public void fibonacci(int n) {
-		long num = n % 10;
-		long first = 1;
-		long second = 0;
-		long sum = 0;
-		
-		for(int i = 1; i <= n; i++) {
-			sum = first + second;
-			first = second;
-			second = sum;
-		}
-		
-		if(num == 1) {
-			System.out.println("The " + n + "st Fibonacci number is " + sum + ".");
-		}
-		else if(num == 2) {
-			System.out.println("The " + n + "nd Fibonacci number is " + sum + ".");
-		}
-		else if(num == 3) {
-			System.out.println("The " + n + "rd Fibonacci number is " + sum + ".");
-		}
-		else {
-			System.out.println("The " + n + "th Fibonacci number is " + sum + ".");
-		}
-	}
-	
-	/**
-	 * What is the sum of all multiples of @x and @y less than @limit, where @x, @y, and
-	 * @limit are positive integers?
-	 * 
-	 * Print your solution in the following format: "The sum of all multiples of X and Y less than LIMIT is Z."
-	 * 
-	 * @param limit
-	 */
-	
-	public void multiples(int x, int y, int limit) {
-		
 	}
 }
