@@ -103,7 +103,7 @@ public class ProblemSet3_5 {
 					for (int i = 1; i <= count; i++) {
 						if (i != count) {
 							if ((leap + (i * 4)) % 400 == 0) {
-								System.out.print((leap + (4 * i)) + ", ");
+								System.out.print((leap + (i * 4)) + ", ");
 							}
 							else if ((leap + (i * 4)) % 400 != 0 && (leap + (i * 4)) % 100 == 0) {
 								System.out.print((leap + ((i + 1) * 4)) + ", ");
