@@ -57,7 +57,6 @@ public class ProblemSet3_5 {
 		}
 		
 		System.out.println("There" + ((count != 1) ? " are " + count + " prime numbers." : " is 1 prime number.") );
-		
 	}
 	
 	public boolean isPrime(int n) {
@@ -88,7 +87,7 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void leapYears(int count) {
-		int lastLeap = 2016; 
+		int leap = 2016; 
 		
 		if (count < 0 || count == 0) {
 			System.out.println("I don't know how to compute the next " + count + " leap years...");
@@ -103,32 +102,31 @@ public class ProblemSet3_5 {
 					}
 					for (int i = 1; i <= count; i++) {
 						if (i != count) {
-							if ((lastLeap + (4 * i)) % 400 == 0) {
-								System.out.print((lastLeap + (4 * i)) + ", ");
+							if ((leap + (i * 4)) % 400 == 0) {
+								System.out.print((leap + (4 * i)) + ", ");
 							}
-							else if ((lastLeap + (4 * i)) % 400 != 0 && (lastLeap + (4 * i)) % 100 == 0) {
-								System.out.print((lastLeap + (4 * (i + 1))) + ", ");
+							else if ((leap + (i * 4)) % 400 != 0 && (leap + (i * 4)) % 100 == 0) {
+								System.out.print((leap + ((i + 1) * 4)) + ", ");
 								i++;
 								count++; 
 							}
 							else if (count == 2) {
-								System.out.print((lastLeap + (4 * i)) + " ");
+								System.out.print((leap + (i * 4)) + " ");
 							}
 							else {
-								System.out.print((lastLeap + (4 * i)) + ", ");
+								System.out.print((leap + (i * 4)) + ", ");
 							}
 						}
 						else if (i == count) {
 							if (count != 1) {
-								System.out.println("and " + (lastLeap + (4 * i)) + ".");
+								System.out.println("and " + (leap + (i * 4)) + ".");
 							}
 							else if (count == 1) {
-								System.out.println((lastLeap + (4 * i)) + ".");
+								System.out.println((leap + (i * 4)) + ".");
 							}
 						}
 					}
 		}
-
 	}
 	
 	/**
@@ -151,12 +149,12 @@ public class ProblemSet3_5 {
 			number = number / 10;
 			}    
 		  
-			if (numb == sum) {  
-			  System.out.println(numb + " is a palindromic number.");   
-			}
-			else {
-			  System.out.println(numb + " is not a palindromic number.");  
-			}
+		if (numb == sum) {
+			System.out.println(numb + " is a palindromic number.");
+		}
+		else {
+			System.out.println(numb + " is not a palindromic number.");
+		}
 	}
 	
 	/**
